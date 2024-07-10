@@ -308,6 +308,7 @@ local applicationsSwitchAndLabel = newSwitchAndLabel(30, 0x000000, "", false)
 local localizationsSwitchAndLabel = newSwitchAndLabel(30, 0x000000, "", true)
 
 local acceptSwitchAndLabel = newSwitchAndLabel(30, 0x000000, "", false)
+local HillOSacceptSwitchAndLabel = newSwitchAndLabel(30, 0x000000, "", false)
 local inSwitchAndLabel = newSwitchAndLabel(30, 0x000000, "", false)
 
 local localizationComboBox = GUI.comboBox(1, 1, 22, 1, 0xF0F0F0, 0x969696, 0xD2D2D2, 0xB4B4B4)
@@ -371,6 +372,10 @@ local function checkLicense()
 	nextButton.disabled = not acceptSwitchAndLabel.switch.state
 end
 
+local function HillOScheckLicense()
+	nextButton.disabled = not HillOSacceptSwitchAndLabel.switch.state
+end
+
 prevButton.onTouch = function()
 	stage = stage - 1
 	loadStage()
@@ -383,6 +388,11 @@ end
 
 acceptSwitchAndLabel.switch.onStateChanged = function()
 	checkLicense()
+	workspace:draw()
+end
+
+HillOSacceptSwitchAndLabel.switch.onStateChanged = function()
+	HillOScheckLicense()
 	workspace:draw()
 end
 
@@ -520,14 +530,24 @@ addStage(function()
 	layout:addChild(localizationsSwitchAndLabel)
 end)
 
--- License acception stage
+-- MineOS License acception stage
 addStage(function()
 	checkLicense()
+
+	local lines = text.wrap({request("LIC")}, layout.width - 2)
+	local textBox = layout:addChild(GUI.textBox(1, 1, layout.width, layout.height - 3, 0xF0F0F0, 0xCCCCCC, lines, 1, 1, 1))
+
+	layout:addChild(acceptSwitchAndLabel)
+end)
+
+-- HillOS License acception stage
+addStage(function()
+	HillOScheckLicense()
 
 	local lines = text.wrap({request("LICENSE")}, layout.width - 2)
 	local textBox = layout:addChild(GUI.textBox(1, 1, layout.width, layout.height - 3, 0xF0F0F0, 0xCCCCCC, lines, 1, 1, 1))
 
-	layout:addChild(acceptSwitchAndLabel)
+	layout:addChild(HillOSacceptSwitchAndLabel)
 end)
 
 -- Downloading stage
@@ -542,7 +562,7 @@ addStage(function()
 
 	-- Renaming if possible
 	if not selectedFilesystemProxy.getLabel() then
-		selectedFilesystemProxy.setLabel("IMineOS HDD")
+		selectedFilesystemProxy.setLabel("HillOS HDD")
 	end
 
 	local function switchProxy(runnable)
@@ -571,7 +591,7 @@ addStage(function()
 	workspace:draw()
 	
 	EEPROMProxy.set(request(EFIURL))
-	EEPROMProxy.setLabel("HillOS BIOS")
+	EEPROMProxy.setLabel("HillOS UEFI")
 	EEPROMProxy.setData(selectedFilesystemProxy.address)
 
 	-- Downloading files
