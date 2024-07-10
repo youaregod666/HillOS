@@ -327,6 +327,7 @@ for i = 1, #files.localizations do
 		applicationsSwitchAndLabel.label.text = localization.applications
 		localizationsSwitchAndLabel.label.text = localization.languages
 		acceptSwitchAndLabel.label.text = localization.accept
+		HillOSacceptSwitchAndLabel.label.text = localization.accept
 	end
 end
 
