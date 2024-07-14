@@ -18,7 +18,7 @@ local HillOSVersion = "1.1.6.7" --
 
 local MineOSVersion = HillOSVersion
 local BN = "1.0"
-local BranchName = "Dev_snowyhill"
+local BranchName = "Beta_snowyhill"
 local BranchName_ = "Do i look dumb?"
 
 
@@ -2857,7 +2857,7 @@ function system.authorize()
   if computer.getArchitecture and computer.getArchitecture() == "Lua 5.2" then
     error("Update to Lua 5.3. HillOS does not support Lua 5.2")
   end
-  if BranchName == "Dev_snowyhill" then
+  if BranchName == "Beta_snowyhill" then
     --GUI.alert(BranchName)
   else
     error("Logon page failed to load.")
