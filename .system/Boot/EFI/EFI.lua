@@ -217,7 +217,7 @@ event.addHandler(
 
 -- Logging in
 system.HillOSVersion = VersionThing
-system.BranchName_ = "Dev_snowyhill"
+system.BranchName_ = "Beta_snowyhill"
 system.MineOSVersion = VersionThing
 if filesystem.exists("/Dev/WorkMineOS2022") then
 else
