@@ -19,11 +19,16 @@ module.onTouch = function()
 	wallpaperChooser:addExtensionFilter(".pic")
 	wallpaperChooser:addExtensionFilter(".lua")
 	wallpaperChooser.onSubmit = function(path)
-		userSettings.interfaceWallpaperPath = path
-		system.updateWallpaper()
-		workspace:draw()
+		if system.tabletmode == true then
+			GUI.alert("Tablet's will not work with wallpapers")
+		else
+			userSettings.interfaceWallpaperPath = path
+			system.updateWallpaper()
+			workspace:draw()
 
-		system.saveUserSettings()
+			system.saveUserSettings()
+		end
+
 	end
 
 	local comboBox = window.contentLayout:addChild(GUI.comboBox(1, 1, 36, 3, 0xE1E1E1, 0x696969, 0xD2D2D2, 0xA5A5A5))
@@ -33,11 +38,15 @@ module.onTouch = function()
 
 	local wallpaperSwitch = window.contentLayout:addChild(GUI.switchAndLabel(1, 1, 36, 8, 0x66DB80, 0xE1E1E1, 0xFFFFFF, 0xA5A5A5, localization.wallpaperEnabled .. ":", userSettings.interfaceWallpaperEnabled)).switch
 	wallpaperSwitch.onStateChanged = function()
-		userSettings.interfaceWallpaperEnabled = wallpaperSwitch.state
-		system.updateWallpaper()
-		workspace:draw()
+		if system.tabletmode == true then
+			GUI.alert("Tablet's will not work with wallpapers")
+		else
+			userSettings.interfaceWallpaperEnabled = wallpaperSwitch.state
+			system.updateWallpaper()
+			workspace:draw()
 
-		system.saveUserSettings()
+			system.saveUserSettings()
+		end
 	end
 
 	window.contentLayout:addChild(GUI.textBox(1, 1, 36, 1, nil, 0xA5A5A5, {localization.wallpaperInfo}, 1, 0, 0, true, true))
