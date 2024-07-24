@@ -39,7 +39,7 @@ package = {
   loaded = {},
   loading = {}
 }
-local VersionThing = "1.1.6.7"
+local VersionThing = "1.1.7.2"
 -- Checks existense of specified path. It will be overriden after filesystem library initialization
 local function requireExists(path)
   return bootFilesystemProxy.exists(path)
@@ -215,16 +215,15 @@ event.addHandler(
   end
 )
 
--- Logging in
+-- Give Version and BranchName
 system.HillOSVersion = VersionThing
 system.BranchName_ = "Beta_snowyhill"
 system.MineOSVersion = VersionThing
-if filesystem.exists("/Dev/WorkMineOS2022") then
-else
-  if filesystem.exists("/Programs/App market.app") then
-    filesystem.remove("/Programs/App Market.app")
-  end
+local component = require("component")
+if component.isAvailable("tablet") then
+  system.tabletmode = true
 end
+  -- Secure EFI Boot and Secure Disk Boot
 local Component = UIRequire("Component")
 local BIOSAdd = Component.eeprom.address
 local BIOSAddLocal = ""
@@ -232,6 +231,19 @@ local BIOSAddLocal = ""
 if filesystem.exists("/.system/.Ø_O/EFI_KEY.nope") then
   BIOSAddLocal = filesystem.read("/.system/.Ø_O/EFI_KEY.nope")
   if BIOSAdd == BIOSAddLocal then
+    local EFI = Component.eeprom
+    local boot = EFI.getData()
+    local disk_thing
+    if filesystem.exists("/.system/.Ø_O/DISK_KEY.nope") then
+      disk_thing = filesystem.read("/.system/.Ø_O/DISK_KEY.nope")
+      if boot == disk_thing then
+      else
+
+      end
+    elseif filesystem.exists("/.system/.Ø_O/DISK_KEY_SETUP.nope") then
+      filesystem.write("/.system/.Ø_O/DISK_KEY.nope", boot)
+      filesystem.remove("/.system/.Ø_O/DISK_KEY_SETUP.nope")
+    end
 
   else
     error("Failed")
@@ -244,6 +256,7 @@ else
     error("EFI_KEY Failed")
   end
 end
+-- Logging in
 system.authorize()
 
 -- Main loop with UI regeneration after errors 
