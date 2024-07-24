@@ -19,11 +19,11 @@ paths.system.applicationSample = paths.system.applications .. "Sample.app/"
 paths.system.applicationAppMarket = paths.system.applications .. "App Market.app/Main.lua"
 paths.system.applicationMineCodeIDE = paths.system.applications .. "MineCode IDE.app/Main.lua"
 paths.system.applicationFinder = paths.system.applications .. "File Explorer.app/Main.lua"
-paths.system.applicationPictureEdit = paths.system.applications .. "Picture Edit.app/Main.lua"
+paths.system.applicationPictureEdit = paths.system.applications .. "Painter.app/Main.lua"
 paths.system.applicationSettings = paths.system.applications .. "Settings.app/Main.lua"
 paths.system.applicationPrint3D = paths.system.applications .. "3D Print.app/Main.lua"
 paths.system.applicationConsole = paths.system.applications .. "Console.app/Main.lua"
-paths.system.applicationPictureView = paths.system.applications .. "Picture View.app/Main.lua"
+paths.system.applicationPictureView = paths.system.applications .. "Viewer.app/Main.lua"
 
 --------------------------------------------------------------------------------
 
