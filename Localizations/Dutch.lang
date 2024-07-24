@@ -121,4 +121,6 @@
 	uploading = "Bezig met uploaden...",
 	uploadingSuccess = "Geüpload naar ",
 	uploadingFailure = "Uploaden mislukt: ",
+
+	Computerinfo = "Computerinformatie",
 }
