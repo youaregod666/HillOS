@@ -10,3 +10,4 @@ Installer
 	wget -f https://raw.githubusercontent.com/youaregod666/HillOS/Beta/Installer/BIOS.lua /tmp/bios.lua && flash -q /tmp/bios.lua && reboot
 
 
+
