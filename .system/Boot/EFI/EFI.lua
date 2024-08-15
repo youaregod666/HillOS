@@ -34,12 +34,12 @@ end
 -- Initializing global package system
 package = {
   paths = {
-    ["/Libraries/"] = true
+    ["/.system/Libraries/"] = true
   },
   loaded = {},
   loading = {}
 }
-
+local VersionThing = "1.1.7.2"
 -- Checks existense of specified path. It will be overriden after filesystem library initialization
 local function requireExists(path)
   return bootFilesystemProxy.exists(path)
@@ -92,6 +92,8 @@ function require(module)
   end
 end
 
+
+
 local GPUProxy = component.proxy(component.list("gpu")())
 local screenWidth, screenHeight = GPUProxy.getResolution()
 
@@ -102,8 +104,9 @@ local function UIRequire(module)
   local function centrize(width)
     return math.floor(screenWidth / 2 - width / 2)
   end
-  local title1, width, total = "IMineOS TE 1.0.5.2", 1, 1
-  local title, width, total = "Starting IMineOS TE", 26, 14
+
+  local title1, width, total = "HillOS " .. VersionThing, 1, 1
+  local title, width, total = "Starting HillOS", 26, 14
   local x, y, part = centrize(width), math.floor(screenHeight / 2 - 1), math.ceil(width * UIRequireCounter / UIRequireTotal)
   UIRequireCounter = UIRequireCounter + 1
   
@@ -160,16 +163,8 @@ package.loaded.computer = computer
 package.loaded.component = component
 package.loaded.unicode = unicode
 
----------------------------------------- Main loop ----------------------------------------
 
-if filesystem.exists("/OS.lua") then
-else
-  -- Delete App MineOS
-  if filesystem.exists("/Applications/App Market.app") then
-    filesystem.remove("/Applications/App Market.app")
-  end
-  -- Delete App MineOS
-end
+---------------------------------------- Main loop ----------------------------------------
 
 -- Creating OS workspace, which contains every window/menu/etc.
 local workspace = GUI.workspace()
@@ -220,6 +215,47 @@ event.addHandler(
   end
 )
 
+-- Give Version and BranchName
+system.HillOSVersion = VersionThing
+system.BranchName_ = "Beta_snowyhill"
+system.MineOSVersion = VersionThing
+local component = require("component")
+if component.isAvailable("tablet") then
+  system.tabletmode = true
+end
+  -- Secure EFI Boot and Secure Disk Boot
+local Component = UIRequire("Component")
+local BIOSAdd = Component.eeprom.address
+local BIOSAddLocal = ""
+
+if filesystem.exists("/.system/.Ø_O/EFI_KEY.nope") then
+  BIOSAddLocal = filesystem.read("/.system/.Ø_O/EFI_KEY.nope")
+  if BIOSAdd == BIOSAddLocal then
+    local EFI = Component.eeprom
+    local boot = EFI.getData()
+    local disk_thing
+    if filesystem.exists("/.system/.Ø_O/DISK_KEY.nope") then
+      disk_thing = filesystem.read("/.system/.Ø_O/DISK_KEY.nope")
+      if boot == disk_thing then
+      else
+
+      end
+    elseif filesystem.exists("/.system/.Ø_O/DISK_KEY_SETUP.nope") then
+      filesystem.write("/.system/.Ø_O/DISK_KEY.nope", boot)
+      filesystem.remove("/.system/.Ø_O/DISK_KEY_SETUP.nope")
+    end
+
+  else
+    error("Failed")
+  end
+else
+  if filesystem.exists("/.system/.Ø_O/EFI_KEY_SETUP.nope") then
+    filesystem.write("/.system/.Ø_O/EFI_KEY.nope", BIOSAdd)
+    filesystem.remove("/.system/.Ø_O/EFI_KEY_SETUP.nope")
+  else
+    error("EFI_KEY Failed")
+  end
+end
 -- Logging in
 system.authorize()
 
