@@ -110,7 +110,10 @@
 	mounts = "Mounts",
 	uploadToPastebin = "تحميل إلى Pastebin",
 	pasteName = "لصق الاسم",
+
 	uploading = "جاري التحميل...",
 	uploadingSuccess = "تم الرفع إلى ",
 	uploadingFailure = "فشل التحميل: "
+
+	Computerinfo = "معلومات الكمبيوتر",
 }

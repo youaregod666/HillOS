@@ -121,4 +121,7 @@
 	uploading = "Uploading in progress...",
 	uploadingSuccess = "Uploaded to ",
 	uploadingFailure = "Uploading failed: ",
+
+	Computerinfo = "Computer info",
+
 }
