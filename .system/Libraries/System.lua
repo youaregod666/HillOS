@@ -1,4 +1,3 @@
-
 local screen = require("Screen")
 local filesystem = require("Filesystem")
 local image = require("Image")
@@ -12,18 +11,23 @@ local number = require("Number")
 
 
 --------------------------------------------------------------------------------
-local HillOSVersion2 = "1.1.6.7"
-local HillOSVersion = "1.1.6.7" --
--- Stop
+-- Version String
+local HillOSVersion2 = "1.1.7.9"
+local HillOSVersion = "1.1.7.9"
+local MineOSVersion = "1.1.7.9"
+local BN = "1.2"
+local NeededForAppstore
 
-local MineOSVersion = HillOSVersion
-local BN = "1.0"
-local BranchName = "Dev_snowyhill"
+-- Branch String
+local BranchName = "Beta_snowyhill"
 local BranchName_ = "Do i look dumb?"
 
+--
+local tabletmode = false
 
 
--- Bulid 1.1.6.7
+
+-- Bulid 1.1.7.9
 
 -- Remember EFI.lua
 
@@ -120,7 +124,7 @@ function system.getDefaultUserSettings()
     interfaceBlurTransparency = 0.6,
 
     interfaceColorDesktopBackground = 0x2137FF,
-    interfaceColorDock = 0x386404,
+    interfaceColorDock = 0x33CC33,
     interfaceColorMenu = 0xF0F0F0,
     interfaceColorDropDownMenuSeparator = 0xA5A5A5,
     interfaceColorDropDownMenuDefaultBackground = 0xFFFFFF,
@@ -139,6 +143,7 @@ function system.getDefaultUserSettings()
     
     tasks = {},
     dockShortcuts = {
+      filesystem.path(paths.system.applicationAppMarket),
       filesystem.path(paths.system.applicationMineCodeIDE),
       filesystem.path(paths.system.applicationFinder),
       filesystem.path(paths.system.applicationPictureEdit),
@@ -2054,30 +2059,141 @@ function system.error(path, line, traceback)
 end
 
 function system.execute(path, ...)
-  path = filesystem.removeSlashes(path)
+  --
+  if userSettings.SMode == "1" then
+    if path == "/Programs/File Explorer.app/Main.lua" then
+      path = filesystem.removeSlashes(path)
 
-  local oldScreenWidth, oldScreenHeight, success, errorPath, line, traceback = screen.getResolution()
-  
-  if filesystem.exists(path) then
-    success, reason = loadfile(path)
+      local oldScreenWidth, oldScreenHeight, success, errorPath, line, traceback = screen.getResolution()
 
-    if success then
-      success, errorPath, line, traceback = system.call(success, ...)
+      if filesystem.exists(path) then
+        success, reason = loadfile(path)
+
+        if success then
+          success, errorPath, line, traceback = system.call(success, ...)
+        else
+          success, errorPath, line, traceback = false, path, tonumber(reason:match(":(%d+)%:")) or 1, reason
+        end
+      else
+        GUI.alert("File \"" .. tostring(path) .. "\" doesn't exists")
+      end
+
+      component.proxy(screen.getGPUProxy().getScreen()).setPrecise(false)
+      screen.setResolution(oldScreenWidth, oldScreenHeight)
+
+      if not success then
+        system.error(errorPath, line, traceback)
+      end
+
+      return success, errorPath, line, traceback
+    elseif path == "/Programs/MineCode IDE.app/Main.lua" then
+      path = filesystem.removeSlashes(path)
+
+      local oldScreenWidth, oldScreenHeight, success, errorPath, line, traceback = screen.getResolution()
+
+      if filesystem.exists(path) then
+        success, reason = loadfile(path)
+
+        if success then
+          success, errorPath, line, traceback = system.call(success, ...)
+        else
+          success, errorPath, line, traceback = false, path, tonumber(reason:match(":(%d+)%:")) or 1, reason
+        end
+      else
+        GUI.alert("File \"" .. tostring(path) .. "\" doesn't exists")
+      end
+
+      component.proxy(screen.getGPUProxy().getScreen()).setPrecise(false)
+      screen.setResolution(oldScreenWidth, oldScreenHeight)
+
+      if not success then
+        system.error(errorPath, line, traceback)
+      end
+
+      return success, errorPath, line, traceback
+
+    elseif path == "/Programs/Viewer.app/Main.lua" then
+      path = filesystem.removeSlashes(path)
+
+      local oldScreenWidth, oldScreenHeight, success, errorPath, line, traceback = screen.getResolution()
+
+      if filesystem.exists(path) then
+        success, reason = loadfile(path)
+
+        if success then
+          success, errorPath, line, traceback = system.call(success, ...)
+        else
+          success, errorPath, line, traceback = false, path, tonumber(reason:match(":(%d+)%:")) or 1, reason
+        end
+      else
+        GUI.alert("File \"" .. tostring(path) .. "\" doesn't exists")
+      end
+
+      component.proxy(screen.getGPUProxy().getScreen()).setPrecise(false)
+      screen.setResolution(oldScreenWidth, oldScreenHeight)
+
+      if not success then
+        system.error(errorPath, line, traceback)
+      end
+
+      return success, errorPath, line, traceback
+    elseif path == "/Programs/Settings.app/Main.lua" then
+      path = filesystem.removeSlashes(path)
+
+      local oldScreenWidth, oldScreenHeight, success, errorPath, line, traceback = screen.getResolution()
+
+      if filesystem.exists(path) then
+        success, reason = loadfile(path)
+
+        if success then
+          success, errorPath, line, traceback = system.call(success, ...)
+        else
+          success, errorPath, line, traceback = false, path, tonumber(reason:match(":(%d+)%:")) or 1, reason
+        end
+      else
+        GUI.alert("File \"" .. tostring(path) .. "\" doesn't exists")
+      end
+
+      component.proxy(screen.getGPUProxy().getScreen()).setPrecise(false)
+      screen.setResolution(oldScreenWidth, oldScreenHeight)
+
+      if not success then
+        system.error(errorPath, line, traceback)
+      end
+
+      return success, errorPath, line, traceback
     else
-      success, errorPath, line, traceback = false, path, tonumber(reason:match(":(%d+)%:")) or 1, reason
+      GUI.alert("This App has been Blocked or doesn't exist")
+
     end
   else
-    GUI.alert("File \"" .. tostring(path) .. "\" doesn't exists")
+    path = filesystem.removeSlashes(path)
+
+    local oldScreenWidth, oldScreenHeight, success, errorPath, line, traceback = screen.getResolution()
+
+    if filesystem.exists(path) then
+      success, reason = loadfile(path)
+
+      if success then
+        success, errorPath, line, traceback = system.call(success, ...)
+      else
+        success, errorPath, line, traceback = false, path, tonumber(reason:match(":(%d+)%:")) or 1, reason
+      end
+    else
+      GUI.alert("File \"" .. tostring(path) .. "\" doesn't exists")
+    end
+
+    component.proxy(screen.getGPUProxy().getScreen()).setPrecise(false)
+    screen.setResolution(oldScreenWidth, oldScreenHeight)
+
+    if not success then
+      system.error(errorPath, line, traceback)
+    end
+
+    return success, errorPath, line, traceback
   end
 
-  component.proxy(screen.getGPUProxy().getScreen()).setPrecise(false)
-  screen.setResolution(oldScreenWidth, oldScreenHeight)
-
-  if not success then
-    system.error(errorPath, line, traceback)
-  end
-
-  return success, errorPath, line, traceback
+  --
 end
 
 local function desktopBackgroundAmbientDraw()
@@ -2454,7 +2570,7 @@ function system.updateDesktop()
   MineOSContextMenu:addItem(localization.aboutSystem).onTouch = function()
     local S = ""
     if userSettings.SMode == "1" then
-      S = "IMineOS TE S Mode"
+      S = "HillOS S Mode"
     else
       S = "HillOS"
     end
@@ -2462,23 +2578,17 @@ function system.updateDesktop()
     container.layout:removeChildren()
 
     local lines = {
-    S .. " " .. HillOSVersion .. BranchName,
+    S .. " " .. HillOSVersion,
     "Copyright © 2022-" .. os.date("%Y", system.getTime()),
     " ",
     "Developers:",
     " ",
-    "Igor Timofeev, vk.com/id7799889",
-    "Gleb Trifonov, vk.com/id88323331",
-    "Yakov Verevkin, vk.com/id60991376",
-    "Alexey Smirnov, vk.com/id23897419",
-    "Timofey Shestakov, vk.com/id113499693",
-    "Sebastian, github.com/youaregod666",
+    "youaregod666, github.com/youaregod666",
+    "Sebastian, github.com/sebastian2007bro",
     " ",
-    "Translators:",
+    "This Project is based on MineOS from early 2022",
     " ",
-    "06Games, github.com/06Games",
-    "Xenia Mazneva, vk.com/id5564402",
-    "Yana Dmitrieva, vk.com/id155326634",
+    "https://github.com/IgorTimofeev/MineOS/tree/master",
     }
 
     local textBox = container.layout:addChild(GUI.textBox(1, 1, container.layout.width, #lines, nil, 0xB4B4B4, lines, 1, 0, 0))
@@ -2491,7 +2601,7 @@ function system.updateDesktop()
 
 
   
-   MineOSContextMenu:addItem("Computer info").onTouch = function()
+   MineOSContextMenu:addItem(localization.Computerinfo).onTouch = function()
      local component = require("Component")
      local container = GUI.addBackgroundContainer(workspace, true, true, localization.aboutSystem)
      container.layout:removeChildren()
@@ -2505,9 +2615,17 @@ function system.updateDesktop()
      local efiname = EFI.getLabel()
      local boot = EFI.getData()
 
+     local S = ""
+     if userSettings.SMode == "1" then
+       S = "HillOS S Mode"
+     else
+       S = "HillOS"
+     end
 
      local lines = {
-       "HillOS",
+       S,
+       "",
+       "Version: " .. HillOSVersion,
        "",
        "Copyright © 2022-" .. os.date("%Y", system.getTime()),
        "",
@@ -2729,29 +2847,6 @@ local function updateUser(u)
   -- Creating desktop widgets
   system.updateDesktop()
 
-  if userSettings.SMode == "1" then
-    local fs = filesystem
-    userSettings.filesShowHidden = false
-    userSettings.EFI = true
-    userSettings.filesShowExtension = false
-    if fs.exists("/Programs/Picture Edit.app") then
-      fs.rename("/Programs/Picture Edit.app", "/Programs/.Picture Edit.app")
-    end
-    if fs.exists("/Programs/3D Print.app") then
-      fs.rename("/Programs/3D Print.app", "/Programs/.3D Print.app")
-    end
-  else
-    local fs = filesystem
-    userSettings.filesShowHidden = false
-    userSettings.EFI = false
-    userSettings.filesShowExtension = false
-    if fs.exists("/Programs/.Picture Edit.app") then
-      fs.rename("/Programs/.Picture Edit.app", "/Programs/Picture Edit.app")
-    end
-    if fs.exists("/Programs/.3D Print.app") then
-      fs.rename("/Programs/.3D Print.app", "/Programs/3D Print.app")
-    end
-  end
   -- Meowing
   workspace:draw()
   require("Network").update()
@@ -2799,19 +2894,6 @@ local function newUserObject(name, addEventHandler)
   return userObject
 end
 
-local function S()
-  local fs = filesystem
-  userSettings.filesShowHidden = false
-  userSettings.EFI = true
-  userSettings.filesShowExtension = false
-  if fs.exists("/Programs/Picture Edit.app") then
-    fs.rename("/Programs/Picture Edit.app", "/Programs/.Picture Edit.app")
-  end
-  if fs.exists("/Programs/3D Print.app") then
-    fs.rename("/Programs/3D Print.app", "/Programs/.3D Print.app")
-  end
-end
-
 function system.updateWorkspace()
   -- Clearing workspace
   workspace:removeChildren()
@@ -2855,13 +2937,15 @@ end
 
 function system.authorize()
   if computer.getArchitecture and computer.getArchitecture() == "Lua 5.2" then
-    error("Update to Lua 5.3. HillOS does not support Lua 5.2")
+    --error("Update to Lua 5.3. HillOS does not support Lua 5.2")
+    computer.shutdown(true)
   end
-  if BranchName == "Dev_snowyhill" then
+  if BranchName == "Beta_snowyhill" then
     --GUI.alert(BranchName)
   else
-    error("Logon page failed to load.")
+    computer.shutdown(true)
   end
+
   system.updateWorkspace()
   -- Obtaining user list and removing non-directory files from it
   local userList = filesystem.list(paths.system.users)
@@ -2955,6 +3039,7 @@ function system.authorize()
   if hash == userSettings.securityPassword then
   container:remove()
   updateUser(userName)
+
   else
   GUI.alert("Incorrect password")
   end
@@ -2978,6 +3063,7 @@ function system.authorize()
   else
   container:remove()
   updateUser(userObject.name)
+
   end
   end
   end
