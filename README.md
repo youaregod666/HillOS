@@ -2,10 +2,10 @@ English
 
 
 
-## IMineOS Standalone has released!
+## HillOS has released!
 
-Hello again, dear friend. Thank you for being with us and supporting our ideas throughout the long development cycle. IMineOS has finally reached the release stage: now it is a completely independent operating system with its own development API and wonderful [illustrated wiki](https://github.com/IgorTimofeev/MineOS/wiki) of it's usage. 
-IMineOS is a GUI based operating system for the Open Computers Minecraft mod. It has extensive and powerful customisation abilities as well as an app market to publish your creations among the OS community.
+HillOS has finally reached the release stage: now it is a completely independent operating system with its own development API and wonderful [illustrated wiki](https://github.com/IgorTimofeev/MineOS/wiki) of it's usage. 
+HillOS is a GUI based operating system for the OpenComputers Minecraft mod. It has extensive and powerful customisation abilities as well as an app store to download apps.
 Here's a list of a few features:
 
 -   Multitasking
@@ -20,20 +20,15 @@ Here's a list of a few features:
 -   Animations, wallpapers, screensavers, color schemes and huge customization possibilities
 -   Open source system API and detailed illustrated documentations
 
-## Project in 2023
-
-will get more updates. 
-Installer and Updater are Done.
-
 ## How to install?
 
-The easiest way is to use default **pastebin** script. Insert an OpenOS floppy disk to computer, insert an Internet Card, turn computer on and type the following to console to install IMineOS:
+The easiest way is to use default **pastebin** script. Insert an OpenOS floppy disk to computer, insert an Internet Card, turn computer on and type the following to console to install HillOS:
 
-	pastebin run Yrys52mW
+	pastebin run ZJDvWCvr
 
 You can paste it to console using middle mouse button or insert key (by default). If for some reason the pastebin method isn't available to you (for example, it's blacklisted on game server or blocked by Internet provider), use alternative command to download the installer directly from the Github page:
 
-	wget -f https://raw.githubusercontent.com/youaregod666/IMineOS-TE/master/Installer/BIOS.lua /tmp/bios.lua && flash -q /tmp/bios.lua && reboot
+	wget -f https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/Installer/BIOS.lua /tmp/bios.lua && flash -q /tmp/bios.lua && reboot
 
 After a moment, a nice system installer will be shown. You will be prompted to select your preferred language, boot volume (can be formatted if needed), create a user profile and customize some settings
 
@@ -41,6 +36,6 @@ After a moment, a nice system installer will be shown. You will be prompted to s
 
 [Wiki by IgorTimofeev](https://github.com/IgorTimofeev/MineOS/wiki)
 
-## Rights
+## Thank you to IgorTimofeev
  
- All rights to [IgorTimofeev](https://github.com/IgorTimofeev)
+ Thank you for creating MineOS. Here is he's github [IgorTimofeev](https://github.com/IgorTimofeev)
