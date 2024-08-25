@@ -2940,7 +2940,7 @@ function system.authorize()
     --error("Update to Lua 5.3. HillOS does not support Lua 5.2")
     computer.shutdown(true)
   end
-  if BranchName == "Beta_snowyhill" then
+  if BranchName == "rev_snowyhill" then
     --GUI.alert(BranchName)
   else
     computer.shutdown(true)
