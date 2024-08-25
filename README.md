@@ -1,2 +1,2 @@
 # HillOS
-it's a opencomputers operating system based on a older version of MineOS
+View all Branchs of HillOS (SnowyHill Bulids)
