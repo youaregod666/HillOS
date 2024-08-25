@@ -3,9 +3,9 @@ it's a opencomputers operating system based on MineOS
 # Install UEFI or the OS
 UEFI/BIOS
 
-	wget -f https://raw.githubusercontent.com/youaregod666/HillOS/Dev/EFI/Minified.lua /tmp/efi.lua && flash -q /tmp/efi.lua && reboot
+	wget -f https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/EFI/Minified.lua /tmp/efi.lua && flash -q /tmp/efi.lua && reboot
 
 Installer
 
-	wget -f https://raw.githubusercontent.com/youaregod666/HillOS/Dev/Installer/BIOS.lua /tmp/bios.lua && flash -q /tmp/bios.lua && reboot
+	wget -f https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/Installer/BIOS.lua /tmp/bios.lua && flash -q /tmp/bios.lua && reboot
 
