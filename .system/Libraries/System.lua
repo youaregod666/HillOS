@@ -12,14 +12,14 @@ local number = require("Number")
 
 --------------------------------------------------------------------------------
 -- Version String
-local HillOSVersion2 = "1.1.7.9"
-local HillOSVersion = "1.1.7.9"
-local MineOSVersion = "1.1.7.9"
+local HillOSVersion2 = "1.1.8.0"
+local HillOSVersion = "1.1.8.0"
+local MineOSVersion = "1.1.8.0"
 local BN = "1.2"
 local NeededForAppstore
 
 -- Branch String
-local BranchName = "Beta_snowyhill"
+local BranchName = "rev_snowyhill"
 local BranchName_ = "Do i look dumb?"
 
 --
