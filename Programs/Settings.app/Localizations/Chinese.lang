@@ -47,7 +47,7 @@
 	users = "用户",
 	
 	localizations = "语言",
-	localizationsInfo = "你想要更多的语言包吗? 请向GitHub上的MineOS仓库发起pr请求",
+	localizationsInfo = "您可以在此處更改您的語言。",
 	
 	time = "日期和时间",
 	timeFormat = "日期格式",
@@ -66,8 +66,8 @@
 	
 	tasks = "开机自启",
 	tasksInfo = "您可以添加任意数量的脚本, 以便在指定的时间按顺序自动执行它们.",
-	tasksBefore = "在启动MineOS之前运行",
-	tasksAfter = "启动MineOS之后运行",
+	tasksBefore = "在启动HillOS之前运行",
+	tasksAfter = "启动HillOS之后运行",
 	tasksPath = "脚本路径",
 	tasksEnabled = "脚本已启用",
 	
@@ -105,4 +105,6 @@
 	usersClaim = "认领电脑",
 	usersClaimInfo = "此外, 你可以为那名玩家创建私有访问权限到你的电脑. 要这样做,那名玩家必须在线",
 	usersClaimPlaceholder = "输入在线玩家名",
+
+	personalizationm1 = "個人化",
 }

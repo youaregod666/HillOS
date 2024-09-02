@@ -150,7 +150,7 @@ end
 window:resize(window.width, window.height)
 selectModule(modulesLayout.children[1])
 
-if system.BranchName_ == "rev_snowyhill" then
+if system.BranchName_ == "dev_longcopenhagen" then
 else
 	-- Branch Error
 	window:remove()

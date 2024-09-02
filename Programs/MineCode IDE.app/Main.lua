@@ -12,6 +12,7 @@ local number = require("Number")
 
 ------------------------------------------------------------
 
+
 local config = {
 	leftTreeViewWidth = 23,
 	syntaxColorScheme = GUI.LUA_SYNTAX_COLOR_SCHEME,
@@ -1849,6 +1850,12 @@ if initialPath and filesystem.exists(initialPath) then
 	openFile(initialPath)
 else
 	newFile()
+end
+
+if system.BranchName_ == "dev_longcopenhagen" then
+else
+	-- Branch Error
+	window:remove()
 end
 
 workspace:draw()

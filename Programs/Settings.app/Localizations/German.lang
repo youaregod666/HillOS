@@ -47,7 +47,7 @@
 	users = "Internetnutzer",
 	
 	localizations = "Sprachlich",
-	localizationsInfo = "Möchten Sie mehr Sprachpakete? Sende pull-Anfrage an das MineOS-repository auf GitHub",
+	localizationsInfo = "Hier können Sie Ihre Sprache ändern.",
 	
 	time = "Datum und Uhrzeit",
 	timeFormat = "Datumsformat",
@@ -105,4 +105,6 @@
 	usersClaim = "Computer blockieren",
 	usersClaimInfo = "Zusätzlich können Sie privaten Zugang zu Ihrem computerblock für Spieler mit gegebenem Namen verursachen. Um es zu tun, Spieler muss online sein",
 	usersClaimPlaceholder = "Geben Sie den Namen des online-Spielers ein",
+
+		personalizationm1 = "Personalisierung",
 }
