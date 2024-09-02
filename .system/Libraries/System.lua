@@ -12,14 +12,14 @@ local number = require("Number")
 
 --------------------------------------------------------------------------------
 -- Version String
-local HillOSVersion2 = "1.1.8.0"
-local HillOSVersion = "1.1.8.0"
-local MineOSVersion = "1.1.8.0"
-local BN = "1.2"
+local HillOSVersion2 = "1.2.2.2"
+local HillOSVersion = "1.2.2.2"
+local MineOSVersion = "1.2.2.2"
+local BN = "1.3"
 local NeededForAppstore
 
 -- Branch String
-local BranchName = "rev_snowyhill"
+local BranchName = "dev_longcopenhagen"
 local BranchName_ = "Do i look dumb?"
 
 --
@@ -2578,17 +2578,20 @@ function system.updateDesktop()
     container.layout:removeChildren()
 
     local lines = {
-    S .. " " .. HillOSVersion,
-    "Copyright © 2022-" .. os.date("%Y", system.getTime()),
-    " ",
-    "Developers:",
-    " ",
-    "youaregod666, github.com/youaregod666",
-    "Sebastian, github.com/sebastian2007bro",
-    " ",
-    "This Project is based on MineOS from early 2022",
-    " ",
-    "https://github.com/IgorTimofeev/MineOS/tree/master",
+      S .. " " .. HillOSVersion,
+      " ",
+      "System Branch: " .. BranchName,
+      " ",
+      "Copyright © 2022-" .. os.date("%Y", system.getTime()),
+      " ",
+      "Developers:",
+      " ",
+      "youaregod666, github.com/youaregod666",
+      "Sebastian, github.com/sebastian2007bro",
+      " ",
+      "This Project is based on MineOS from early 2022",
+      " ",
+      "https://github.com/IgorTimofeev/MineOS/tree/master",
     }
 
     local textBox = container.layout:addChild(GUI.textBox(1, 1, container.layout.width, #lines, nil, 0xB4B4B4, lines, 1, 0, 0))
@@ -2596,59 +2599,56 @@ function system.updateDesktop()
     textBox.eventHandler = container.panel.eventHandler
 
     workspace:draw()
+  end
+
+  MineOSContextMenu:addItem(localization.Computerinfo).onTouch = function()
+    local component = require("Component")
+    local container = GUI.addBackgroundContainer(workspace, true, true, localization.aboutSystem)
+    container.layout:removeChildren()
+
+    local EFI = component.eeprom
+    local totalMemoryKB = math.modf(computer.totalMemory() / 1024)
+    local freeMemoryKB = math.modf(computer.freeMemory() / 1024)
+    local totalMemoryMB = math.modf(totalMemoryKB / 1024)
+    local freeMemoryMB = math.modf(freeMemoryKB / 1024)
+    local uptime = math.modf(computer.uptime())
+    local efiname = EFI.getLabel()
+    local boot = EFI.getData()
+
+    local S = ""
+    if userSettings.SMode == "1" then
+      S = "HillOS S Mode"
+    else
+      S = "HillOS"
     end
 
+    local lines = {
+      S,
+      "",
+      "Version: " .. HillOSVersion,
+      "",
+      "Copyright © 2022-" .. os.date("%Y", system.getTime()),
+      "",
+      "UEFI/BIOS name: " .. efiname,
+      "",
+      "totalMemoryKB: " .. totalMemoryKB,
+      "",
+      "totalMemoryMB: " .. totalMemoryMB,
+      "",
+      "Free Memory KB: " .. freeMemoryKB,
+      "",
+      "Free Memory MB: " .. freeMemoryMB,
+      "",
+      "Computers Uptime: " .. uptime,
+      "",
+      "Boot Drive: " .. boot,
+    }
 
+    local textBox = container.layout:addChild(GUI.textBox(1, 1, container.layout.width, #lines, nil, 0xB4B4B4, lines, 1, 0, 0))
+    textBox:setAlignment(GUI.ALIGNMENT_HORIZONTAL_CENTER, GUI.ALIGNMENT_VERTICAL_TOP)
+    textBox.eventHandler = container.panel.eventHandler
 
-  
-   MineOSContextMenu:addItem(localization.Computerinfo).onTouch = function()
-     local component = require("Component")
-     local container = GUI.addBackgroundContainer(workspace, true, true, localization.aboutSystem)
-     container.layout:removeChildren()
-
-     local EFI = component.eeprom
-     local totalMemoryKB = math.modf(computer.totalMemory() / 1024)
-     local freeMemoryKB = math.modf(computer.freeMemory() / 1024)
-     local totalMemoryMB = math.modf(totalMemoryKB / 1024)
-     local freeMemoryMB = math.modf(freeMemoryKB / 1024)
-     local uptime = math.modf(computer.uptime())
-     local efiname = EFI.getLabel()
-     local boot = EFI.getData()
-
-     local S = ""
-     if userSettings.SMode == "1" then
-       S = "HillOS S Mode"
-     else
-       S = "HillOS"
-     end
-
-     local lines = {
-       S,
-       "",
-       "Version: " .. HillOSVersion,
-       "",
-       "Copyright © 2022-" .. os.date("%Y", system.getTime()),
-       "",
-       "UEFI/BIOS name: " .. efiname,
-       "",
-       "totalMemoryKB: " .. totalMemoryKB,
-       "",
-       "totalMemoryMB: " .. totalMemoryMB,
-       "",
-       "Free Memory KB: " .. freeMemoryKB,
-       "",
-       "Free Memory MB: " .. freeMemoryMB,
-       "",
-       "Computers Uptime: " .. uptime,
-       "",
-       "Boot Drive: " .. boot,
-     }
-
-     local textBox = container.layout:addChild(GUI.textBox(1, 1, container.layout.width, #lines, nil, 0xB4B4B4, lines, 1, 0, 0))
-     textBox:setAlignment(GUI.ALIGNMENT_HORIZONTAL_CENTER, GUI.ALIGNMENT_VERTICAL_TOP)
-     textBox.eventHandler = container.panel.eventHandler
-
-     workspace:draw()
+    workspace:draw()
   end
 
   MineOSContextMenu:addSeparator()
@@ -2940,7 +2940,7 @@ function system.authorize()
     --error("Update to Lua 5.3. HillOS does not support Lua 5.2")
     computer.shutdown(true)
   end
-  if BranchName == "rev_snowyhill" then
+  if BranchName == "dev_longcopenhagen" then
     --GUI.alert(BranchName)
   else
     computer.shutdown(true)
