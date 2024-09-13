@@ -39,7 +39,7 @@ package = {
   loaded = {},
   loading = {}
 }
-local VersionThing = "1.1.8.0"
+local VersionThing = "1.1.8.2"
 -- Checks existense of specified path. It will be overriden after filesystem library initialization
 local function requireExists(path)
   return bootFilesystemProxy.exists(path)
@@ -228,20 +228,20 @@ local Component = UIRequire("Component")
 local BIOSAdd = Component.eeprom.address
 local BIOSAddLocal = ""
 
-if filesystem.exists("/.system/.Ø_O/EFI_KEY.nope") then
-  BIOSAddLocal = filesystem.read("/.system/.Ø_O/EFI_KEY.nope")
+if filesystem.exists("/.system/.Ø_O/EFI_KEY_SETUP.nope") then
+  BIOSAddLocal = filesystem.read("/.system/.Ø_O/EFI_KEY_SETUP.nope")
   if BIOSAdd == BIOSAddLocal then
     local EFI = Component.eeprom
     local boot = EFI.getData()
     local disk_thing
-    if filesystem.exists("/.system/.Ø_O/DISK_KEY.nope") then
-      disk_thing = filesystem.read("/.system/.Ø_O/DISK_KEY.nope")
+    if filesystem.exists("/.system/.Ø_O/DISK_KEY_SETUP.nope") then
+      disk_thing = filesystem.read("/.system/.Ø_O/DISK_KEY_SETUP.nope")
       if boot == disk_thing then
       else
 
       end
     elseif filesystem.exists("/.system/.Ø_O/DISK_KEY_SETUP.nope") then
-      filesystem.write("/.system/.Ø_O/DISK_KEY.nope", boot)
+      filesystem.write("/.system/.Ø_O/DISK_KEY_SETUP.nope", boot)
       filesystem.remove("/.system/.Ø_O/DISK_KEY_SETUP.nope")
     end
 
@@ -250,7 +250,7 @@ if filesystem.exists("/.system/.Ø_O/EFI_KEY.nope") then
   end
 else
   if filesystem.exists("/.system/.Ø_O/EFI_KEY_SETUP.nope") then
-    filesystem.write("/.system/.Ø_O/EFI_KEY.nope", BIOSAdd)
+    filesystem.write("/.system/.Ø_O/EFI_KEY_SETUP.nope", BIOSAdd)
     filesystem.remove("/.system/.Ø_O/EFI_KEY_SETUP.nope")
   else
     error("EFI_KEY Failed")
