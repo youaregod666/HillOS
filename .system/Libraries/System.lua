@@ -12,9 +12,9 @@ local number = require("Number")
 
 --------------------------------------------------------------------------------
 -- Version String
-local HillOSVersion2 = "1.1.8.0"
-local HillOSVersion = "1.1.8.0"
-local MineOSVersion = "1.1.8.0"
+local HillOSVersion2 = "1.1.8.2"
+local HillOSVersion = "1.1.8.2"
+local MineOSVersion = "1.1.8.2"
 local BN = "1.2"
 local NeededForAppstore
 
@@ -27,7 +27,7 @@ local tabletmode = false
 
 
 
--- Bulid 1.1.7.9
+-- Bulid 1.1.8.2
 
 -- Remember EFI.lua
 
@@ -296,7 +296,7 @@ function system.call(method, ...)
   local xpcallSuccess, xpcallReason = xpcall(launchMethod, tracebackMethod)
   if type(xpcallReason) == "string" or type(xpcallReason) == "nil" then
     xpcallReason = {
-      path = paths.system.libraries .. "System.lua",
+      path = paths.system.libraries .. "System_With_Dock.lua",
       line = 1,
       traceback = "system fatal error: " .. tostring(xpcallReason)
     }
