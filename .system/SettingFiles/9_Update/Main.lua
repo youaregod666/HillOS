@@ -108,15 +108,12 @@ module.onTouch = function()
     internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/.system/Libraries/Text.lua", "/.system/Libraries/Text.lua")
     internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/.system/Libraries/Vector.lua", "/.system/Libraries/Vector.lua")
     internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/.system/SettingFiles/9_Update/Main.lua", "/.system/SettingFiles/9_Update/Main.lua")
-    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/.system/SettingFiles/9_Update/Icon.pic", "/.system/SettingFiles/9_Update/Icon.pic")
-    if fs.exists("/Backup/.system/Libraries/MeowEngine") then
-      if fs.exists("/Backup/.system/Libraries/OpenComputersGL") then
-        internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/MeowEngine/Main.lua", "/.system/Libraries/MeowEngine/Main.lua")
-        internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/OpenComputersGL/Main.lua", "/.system/Libraries/OpenComputersGL/Main.lua")
-        internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/OpenComputersGL/Materials.lua", "/.system/Libraries/OpenComputersGL/Materials.lua")
-        internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/OpenComputersGL/Renderer.lua", "/.system/Libraries/OpenComputersGL/Renderer.lua")
-      end
-    end
+    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/.system/SettingFiles/9_Update/Icon.pic", "/.system/SettingFiles/9_Update/Icon.pic")    
+    --
+    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/MeowEngine/Main.lua", "/.system/Libraries/MeowEngine/Main.lua")
+    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/OpenComputersGL/Main.lua", "/.system/Libraries/OpenComputersGL/Main.lua")
+    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/OpenComputersGL/Materials.lua", "/.system/Libraries/OpenComputersGL/Materials.lua")
+    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/OpenComputersGL/Renderer.lua", "/.system/Libraries/OpenComputersGL/Renderer.lua")
     if  wallpaperSwitch.switch.state == true then
       --internet.download("https://raw.githubusercontent.com/youaregod666/IMineOS_BIOS/master/Libraries/Vector.lua", "/f.lua")
     --end
