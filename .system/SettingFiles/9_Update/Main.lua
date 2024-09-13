@@ -110,10 +110,10 @@ module.onTouch = function()
     internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/.system/SettingFiles/9_Update/Main.lua", "/.system/SettingFiles/9_Update/Main.lua")
     internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/.system/SettingFiles/9_Update/Icon.pic", "/.system/SettingFiles/9_Update/Icon.pic")    
     --
-    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/MeowEngine/Main.lua", "/.system/Libraries/MeowEngine/Main.lua")
-    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/OpenComputersGL/Main.lua", "/.system/Libraries/OpenComputersGL/Main.lua")
-    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/OpenComputersGL/Materials.lua", "/.system/Libraries/OpenComputersGL/Materials.lua")
-    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/OpenComputersGL/Renderer.lua", "/.system/Libraries/OpenComputersGL/Renderer.lua")
+    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/.system/Libraries/MeowEngine/Main.lua", "/.system/Libraries/MeowEngine/Main.lua")
+    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/.system/Libraries/OpenComputersGL/Main.lua", "/.system/Libraries/OpenComputersGL/Main.lua")
+    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/.system/Libraries/OpenComputersGL/Materials.lua", "/.system/Libraries/OpenComputersGL/Materials.lua")
+    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/SnowyHill/.system/Libraries/OpenComputersGL/Renderer.lua", "/.system/Libraries/OpenComputersGL/Renderer.lua")
     if  wallpaperSwitch.switch.state == true then
       --internet.download("https://raw.githubusercontent.com/youaregod666/IMineOS_BIOS/master/Libraries/Vector.lua", "/f.lua")
     --end
