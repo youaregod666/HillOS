@@ -12,9 +12,9 @@ local number = require("Number")
 
 --------------------------------------------------------------------------------
 -- Version String
-local HillOSVersion2 = "1.2.2.2"
-local HillOSVersion = "1.2.2.2"
-local MineOSVersion = "1.2.2.2"
+local HillOSVersion2 = "1.2.2.6"
+local HillOSVersion = "1.2.2.6"
+local MineOSVersion = "1.2.2.6"
 local BN = "1.3"
 local NeededForAppstore
 
@@ -296,7 +296,7 @@ function system.call(method, ...)
   local xpcallSuccess, xpcallReason = xpcall(launchMethod, tracebackMethod)
   if type(xpcallReason) == "string" or type(xpcallReason) == "nil" then
     xpcallReason = {
-      path = paths.system.libraries .. "System.lua",
+      path = paths.system.libraries .. "System_With_Dock.lua",
       line = 1,
       traceback = "system fatal error: " .. tostring(xpcallReason)
     }
