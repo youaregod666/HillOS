@@ -229,7 +229,7 @@ local BIOSAdd = Component.eeprom.address
 local BIOSAddLocal = ""
 
 if filesystem.exists("/.system/.Ø_O/EFI_KEY.nope") then
-  BIOSAddLocal = filesystem.read("/.system/.Ø_O/EFI_KEY_SETUP.nope")
+  BIOSAddLocal = filesystem.read("/.system/.Ø_O/EFI_KEY.nope")
   if BIOSAdd == BIOSAddLocal then
     local EFI = Component.eeprom
     local boot = EFI.getData()
