@@ -137,7 +137,7 @@ local function deserialize(text)
 end
 
 -- Clearing screen
-component.invoke(GPUAddress, "setBackground", 0xE1E1E1)
+component.invoke(GPUAddress, "setBackground", 0x000000)
 component.invoke(GPUAddress, "fill", 1, 1, screenWidth, screenHeight, " ")
 
 -- Searching for appropriate temporary filesystem for storing libraries, images, etc
