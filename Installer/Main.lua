@@ -38,7 +38,7 @@ end
 
 local function title()
 	local y = math.floor(screenHeight / 2 - 1)
-	centrizedText(y, 0x000000, "HillOS")
+	centrizedText(y, 0xFFFFFF, "HillOS")
 
 	return y + 2
 end
