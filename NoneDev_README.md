@@ -24,7 +24,7 @@ Here's a list of a few features:
 
 The easiest way is to use default **pastebin** script. Insert an OpenOS floppy disk to computer, insert an Internet Card, turn computer on and type the following to console to install HillOS:
 
-	pastebin run ZJDvWCvr
+	pastebin run gTPzQXiN
 
 You can paste it to console using middle mouse button or insert key (by default). If for some reason the pastebin method isn't available to you (for example, it's blacklisted on game server or blocked by Internet provider), use alternative command to download the installer directly from the Github page:
 
