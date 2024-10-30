@@ -1,7 +1,3 @@
-English
-
-
-
 ## HillOS has released!
 
 HillOS has finally reached the release stage: now it is a completely independent operating system with its own development API and wonderful [illustrated wiki](https://github.com/IgorTimofeev/MineOS/wiki) of it's usage. 
