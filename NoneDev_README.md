@@ -6,7 +6,7 @@ English
 
 HillOS has finally reached the release stage: now it is a completely independent operating system with its own development API and wonderful [illustrated wiki](https://github.com/IgorTimofeev/MineOS/wiki) of it's usage. 
 HillOS is a GUI based operating system for the OpenComputers Minecraft mod. It has extensive and powerful customisation abilities as well as an app store to download apps.
-Here's a list of a few features:
+## Here's a list of a few features:
 
 -   Multitasking
 -   Double buffered graphical user interface
