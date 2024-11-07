@@ -222,7 +222,7 @@ local paths = require("Paths")
 
 -- Creating main UI workspace
 local workspace = GUI.workspace()
-workspace:addChild(GUI.panel(1, 1, workspace.width, workspace.height, 0x1E1E1E))
+workspace:addChild(GUI.panel(1, 1, workspace.width, workspace.height, 0x336dbf))
 
 -- Main installer window
 local window = workspace:addChild(GUI.window(1, 1, 80, 24))
