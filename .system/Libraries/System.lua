@@ -11,10 +11,10 @@ local number = require("Number")
 
 --------------------------------------------------------------------------------
 -- Version String
-local HillOSVersion2 = "1.2.8.9"
-local HillOSVersion = "1.2.8.9"
-local MineOSVersion = "1.2.8.9"
-local BN = "1.3"
+local HillOSVersion2 = "1.2.8.16"
+local HillOSVersion = "1.2.8.16"
+local MineOSVersion = "1.2.8.16"
+local BN = "1.4"
 local NeededForAppstore
 
 -- Branch String
@@ -139,6 +139,7 @@ function system.getDefaultUserSettings()
 		iconVerticalSpace = 1,
 
 		SMode = "0",
+		EFI = false,
 		
 		tasks = {},
 		dockShortcuts = {
@@ -2548,6 +2549,16 @@ function system.updateDesktop()
 			contextMenu:addItem(localization.moveLeft, indexOf <= 1).onTouch = function()
 				moveDockIcon(indexOf, -1)
 			end
+			if userSettings.EFI == true then
+
+				contextMenu:addSeparator()
+
+				contextMenu:addItem("Settings").onTouch = function()
+					system.execute(paths.system.applicationSettings)
+				end
+
+			end
+
 			
 			contextMenu:addSeparator()
 			
@@ -2672,8 +2683,6 @@ function system.updateDesktop()
 		local lines = {
 			S .. " " .. HillOSVersion,
 			" ",
-			"System Branch: " .. BranchName,
-			" ",
 			"Copyright © 2022-" .. os.date("%Y", system.getTime()),
 			" ",
 			"Developers:",
@@ -2718,6 +2727,8 @@ function system.updateDesktop()
 			S,
 			"",
 			"Version: " .. HillOSVersion,
+			" ",
+			"System Branch: " .. BranchName,
 			"",
 			"Copyright © 2022-" .. os.date("%Y", system.getTime()),
 			"",
