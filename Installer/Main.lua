@@ -689,7 +689,12 @@ addStage(function()
 	addImage(1, 1, "Done")
 	addTitle(0x969696, localization.installed)
 	addStageButton(localization.reboot).onTouch = function()
-	computer.shutdown(true)
+		if computer.getArchitecture and computer.getArchitecture() == "Lua 5.2" then
+        		local computer = require("computer")
+        		computer.setArchitecture("Lua 5.3")
+    		else
+        		computer.shutdown(true)
+    		end
 	end
 	workspace:draw()
 
