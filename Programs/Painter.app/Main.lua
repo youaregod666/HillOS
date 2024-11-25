@@ -27,7 +27,7 @@ local config = {
 local locale = system.getCurrentScriptLocalization()
 local currentScriptDirectory = filesystem.path(system.getCurrentScript())
 local toolsPath = currentScriptDirectory .. "Tools/"
-local configPath = paths.user.applicationData .. "Picture Edit/Config2.cfg"
+local configPath = paths.user.applicationData .. "Painter/Config2.cfg"
 local savePath
 local saveItem
 local tool
@@ -746,7 +746,7 @@ window:resize(window.width, window.height)
 
 onToolTouch(5)
 
-if system.BranchName_ == "dev_longcopenhagen" then
+if system.BranchName_ == "rev_longcopenhagen" then
 else
 	-- Branch Error
 	window:remove()
