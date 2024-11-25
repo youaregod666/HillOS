@@ -39,7 +39,7 @@ package = {
   loaded = {},
   loading = {}
 }
-local VersionThing = "1.2.2.6"
+local VersionThing = "1.2.4.12"
 -- Checks existense of specified path. It will be overriden after filesystem library initialization
 local function requireExists(path)
   return bootFilesystemProxy.exists(path)
@@ -217,8 +217,10 @@ event.addHandler(
 
 -- Give Version and BranchName
 system.HillOSVersion = VersionThing
-system.BranchName_ = "dev_longcopenhagen"
+system.BranchName_ = "rev_longcopenhagen"
 system.MineOSVersion = VersionThing
+-- BN Version
+system.BN = "1.3"
 local component = require("component")
 if component.isAvailable("tablet") then
   system.tabletmode = true

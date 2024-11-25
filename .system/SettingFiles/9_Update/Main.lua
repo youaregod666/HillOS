@@ -78,9 +78,9 @@ module.onTouch = function()
     --if fs.exists("/.com.IMineOS.EFI") then
     --  fs.copy("/.com.IMineOS.EFI/", "/Backup/.com.IMineOS.EFI/")
     --  fs.remove("/.com.IMineOS.EFI")
-    --elseif fs.exists("/OS.lua") then
-    --  fs.copy("/OS.lua", "/Backup/OS.lua")
-    --  fs.remove("/OS.lua")
+    --elseif fs.exists("/OS__.lua") then
+    --  fs.copy("/OS__.lua", "/Backup/OS__.lua")
+    --  fs.remove("/OS__.lua")
     --end
     --fs.copy("/.com.IMineOS.EFI/", "/Backup/EFI-OLD/")
     --ss.text = "Backing Up"
@@ -104,7 +104,7 @@ module.onTouch = function()
     internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/Paths.lua", "/.system/Libraries/Paths.lua")
     internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/SHA-256.lua", "/.system/Libraries/SHA-256.lua")
     internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/Screen.lua", "/.system/Libraries/Screen.lua")
-    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/System.lua", "/.system/Libraries/System.lua")
+    internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/System_With_Dock.lua", "/.system/Libraries/System_With_Dock.lua")
     internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/Text.lua", "/.system/Libraries/Text.lua")
     internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/.system/Libraries/Vector.lua", "/.system/Libraries/Vector.lua")
     internet.download("https://raw.githubusercontent.com/youaregod666/HillOS/Beta/Programs/Settings.app/Modules/9_Update/Main.lua", "/Programs/Settings.app/Modules/9_Update/Main.lua")
@@ -136,7 +136,7 @@ module.onTouch = function()
       --flashEFI("https://raw.githubusercontent.com/youaregod666/IMineOS_BIOS/master/EFI/Minified.lua")
     end
     --fs.remove("/Libraries/" .. text .. ".lua")
-    --fs.rename("/Libraries/" .. text ..".lua", "/OS.lua")
+    --fs.rename("/Libraries/" .. text ..".lua", "/OS__.lua")
 
     computer.shutdown(true)
   end

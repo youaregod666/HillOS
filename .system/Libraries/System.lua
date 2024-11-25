@@ -9,25 +9,22 @@ local paths = require("Paths")
 local text = require("Text")
 local number = require("Number")
 
-
 --------------------------------------------------------------------------------
 -- Version String
-local HillOSVersion2 = "1.2.2.6"
-local HillOSVersion = "1.2.2.6"
-local MineOSVersion = "1.2.2.6"
+local HillOSVersion2 = "1.2.4.12"
+local HillOSVersion = "1.2.4.12"
+local MineOSVersion = "1.2.4.12"
 local BN = "1.3"
 local NeededForAppstore
 
 -- Branch String
-local BranchName = "dev_longcopenhagen"
+local BranchName = "rev_longcopenhagen"
 local BranchName_ = "Do i look dumb?"
 
 --
 local tabletmode = false
 
-
-
--- Bulid 1.1.7.9
+-- Build 1.1.7.9
 
 -- Remember EFI.lua
 
@@ -123,8 +120,8 @@ function system.getDefaultUserSettings()
     interfaceBlurRadius = 3,
     interfaceBlurTransparency = 0.6,
 
-    interfaceColorDesktopBackground = 0x2137FF,
-    interfaceColorDock = 0x33CC33,
+    interfaceColorDesktopBackground = 0x336dbf,
+    interfaceColorDock = 0x33b600,
     interfaceColorMenu = 0xF0F0F0,
     interfaceColorDropDownMenuSeparator = 0xA5A5A5,
     interfaceColorDropDownMenuDefaultBackground = 0xFFFFFF,
@@ -2631,9 +2628,9 @@ function system.updateDesktop()
       "",
       "UEFI/BIOS name: " .. efiname,
       "",
-      "totalMemoryKB: " .. totalMemoryKB,
+      "Total Memory KB: " .. totalMemoryKB,
       "",
-      "totalMemoryMB: " .. totalMemoryMB,
+      "Total Memory MB: " .. totalMemoryMB,
       "",
       "Free Memory KB: " .. freeMemoryKB,
       "",
@@ -2937,10 +2934,10 @@ end
 
 function system.authorize()
   if computer.getArchitecture and computer.getArchitecture() == "Lua 5.2" then
-    --error("Update to Lua 5.3. HillOS does not support Lua 5.2")
-    computer.shutdown(true)
+    error("Update to Lua 5.3 or higher. HillOS does not support Lua 5.2 or lower")
+    --computer.shutdown(true)
   end
-  if BranchName == "dev_longcopenhagen" then
+  if BranchName == "rev_longcopenhagen" then
     --GUI.alert(BranchName)
   else
     computer.shutdown(true)
