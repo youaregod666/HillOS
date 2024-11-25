@@ -9,22 +9,25 @@ local paths = require("Paths")
 local text = require("Text")
 local number = require("Number")
 
+
 --------------------------------------------------------------------------------
 -- Version String
-local HillOSVersion2 = "1.2.4.12"
-local HillOSVersion = "1.2.4.12"
-local MineOSVersion = "1.2.4.12"
-local BN = "1.3"
+local HillOSVersion2 = "1.1.8.2"
+local HillOSVersion = "1.1.8.2"
+local MineOSVersion = "1.1.8.2"
+local BN = "1.2"
 local NeededForAppstore
 
 -- Branch String
-local BranchName = "rev_longcopenhagen"
+local BranchName = "rev_snowyhill"
 local BranchName_ = "Do i look dumb?"
 
 --
 local tabletmode = false
 
--- Build 1.1.7.9
+
+
+-- Bulid 1.1.8.2
 
 -- Remember EFI.lua
 
@@ -120,8 +123,8 @@ function system.getDefaultUserSettings()
     interfaceBlurRadius = 3,
     interfaceBlurTransparency = 0.6,
 
-    interfaceColorDesktopBackground = 0x336dbf,
-    interfaceColorDock = 0x33b600,
+    interfaceColorDesktopBackground = 0x2137FF,
+    interfaceColorDock = 0x33CC33,
     interfaceColorMenu = 0xF0F0F0,
     interfaceColorDropDownMenuSeparator = 0xA5A5A5,
     interfaceColorDropDownMenuDefaultBackground = 0xFFFFFF,
@@ -2575,20 +2578,17 @@ function system.updateDesktop()
     container.layout:removeChildren()
 
     local lines = {
-      S .. " " .. HillOSVersion,
-      " ",
-      "System Branch: " .. BranchName,
-      " ",
-      "Copyright © 2022-" .. os.date("%Y", system.getTime()),
-      " ",
-      "Developers:",
-      " ",
-      "youaregod666, github.com/youaregod666",
-      "Sebastian, github.com/sebastian2007bro",
-      " ",
-      "This Project is based on MineOS from early 2022",
-      " ",
-      "https://github.com/IgorTimofeev/MineOS/tree/master",
+    S .. " " .. HillOSVersion,
+    "Copyright © 2022-" .. os.date("%Y", system.getTime()),
+    " ",
+    "Developers:",
+    " ",
+    "youaregod666, github.com/youaregod666",
+    "Sebastian, github.com/sebastian2007bro",
+    " ",
+    "This Project is based on MineOS from early 2022",
+    " ",
+    "https://github.com/IgorTimofeev/MineOS/tree/master",
     }
 
     local textBox = container.layout:addChild(GUI.textBox(1, 1, container.layout.width, #lines, nil, 0xB4B4B4, lines, 1, 0, 0))
@@ -2596,56 +2596,59 @@ function system.updateDesktop()
     textBox.eventHandler = container.panel.eventHandler
 
     workspace:draw()
-  end
-
-  MineOSContextMenu:addItem(localization.Computerinfo).onTouch = function()
-    local component = require("Component")
-    local container = GUI.addBackgroundContainer(workspace, true, true, localization.aboutSystem)
-    container.layout:removeChildren()
-
-    local EFI = component.eeprom
-    local totalMemoryKB = math.modf(computer.totalMemory() / 1024)
-    local freeMemoryKB = math.modf(computer.freeMemory() / 1024)
-    local totalMemoryMB = math.modf(totalMemoryKB / 1024)
-    local freeMemoryMB = math.modf(freeMemoryKB / 1024)
-    local uptime = math.modf(computer.uptime())
-    local efiname = EFI.getLabel()
-    local boot = EFI.getData()
-
-    local S = ""
-    if userSettings.SMode == "1" then
-      S = "HillOS S Mode"
-    else
-      S = "HillOS"
     end
 
-    local lines = {
-      S,
-      "",
-      "Version: " .. HillOSVersion,
-      "",
-      "Copyright © 2022-" .. os.date("%Y", system.getTime()),
-      "",
-      "UEFI/BIOS name: " .. efiname,
-      "",
-      "Total Memory KB: " .. totalMemoryKB,
-      "",
-      "Total Memory MB: " .. totalMemoryMB,
-      "",
-      "Free Memory KB: " .. freeMemoryKB,
-      "",
-      "Free Memory MB: " .. freeMemoryMB,
-      "",
-      "Computers Uptime: " .. uptime,
-      "",
-      "Boot Drive: " .. boot,
-    }
 
-    local textBox = container.layout:addChild(GUI.textBox(1, 1, container.layout.width, #lines, nil, 0xB4B4B4, lines, 1, 0, 0))
-    textBox:setAlignment(GUI.ALIGNMENT_HORIZONTAL_CENTER, GUI.ALIGNMENT_VERTICAL_TOP)
-    textBox.eventHandler = container.panel.eventHandler
 
-    workspace:draw()
+  
+   MineOSContextMenu:addItem(localization.Computerinfo).onTouch = function()
+     local component = require("Component")
+     local container = GUI.addBackgroundContainer(workspace, true, true, localization.aboutSystem)
+     container.layout:removeChildren()
+
+     local EFI = component.eeprom
+     local totalMemoryKB = math.modf(computer.totalMemory() / 1024)
+     local freeMemoryKB = math.modf(computer.freeMemory() / 1024)
+     local totalMemoryMB = math.modf(totalMemoryKB / 1024)
+     local freeMemoryMB = math.modf(freeMemoryKB / 1024)
+     local uptime = math.modf(computer.uptime())
+     local efiname = EFI.getLabel()
+     local boot = EFI.getData()
+
+     local S = ""
+     if userSettings.SMode == "1" then
+       S = "HillOS S Mode"
+     else
+       S = "HillOS"
+     end
+
+     local lines = {
+       S,
+       "",
+       "Version: " .. HillOSVersion,
+       "",
+       "Copyright © 2022-" .. os.date("%Y", system.getTime()),
+       "",
+       "UEFI/BIOS name: " .. efiname,
+       "",
+       "totalMemoryKB: " .. totalMemoryKB,
+       "",
+       "totalMemoryMB: " .. totalMemoryMB,
+       "",
+       "Free Memory KB: " .. freeMemoryKB,
+       "",
+       "Free Memory MB: " .. freeMemoryMB,
+       "",
+       "Computers Uptime: " .. uptime,
+       "",
+       "Boot Drive: " .. boot,
+     }
+
+     local textBox = container.layout:addChild(GUI.textBox(1, 1, container.layout.width, #lines, nil, 0xB4B4B4, lines, 1, 0, 0))
+     textBox:setAlignment(GUI.ALIGNMENT_HORIZONTAL_CENTER, GUI.ALIGNMENT_VERTICAL_TOP)
+     textBox.eventHandler = container.panel.eventHandler
+
+     workspace:draw()
   end
 
   MineOSContextMenu:addSeparator()
@@ -2934,10 +2937,10 @@ end
 
 function system.authorize()
   if computer.getArchitecture and computer.getArchitecture() == "Lua 5.2" then
-    error("Update to Lua 5.3 or higher. HillOS does not support Lua 5.2 or lower")
-    --computer.shutdown(true)
+    --error("Update to Lua 5.3. HillOS does not support Lua 5.2")
+    computer.shutdown(true)
   end
-  if BranchName == "rev_longcopenhagen" then
+  if BranchName == "rev_snowyhill" then
     --GUI.alert(BranchName)
   else
     computer.shutdown(true)
