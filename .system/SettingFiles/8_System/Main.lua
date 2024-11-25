@@ -22,6 +22,8 @@ module.onTouch = function()
 	-- System Branch
 	window.contentLayout:addChild(GUI.text(1, 1, 0x2D2D2D, "System Branch Name: " .. system.BranchName_))
 
+	window.contentLayout:addChild(GUI.text(1, 1, 0x2D2D2D, ""))
+
 
 	--window.contentLayout:addChild(GUI.text(1, 1, 0x2D2D2D, localization.systemArchitecture))
 
