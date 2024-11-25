@@ -47,7 +47,7 @@
 	users = "Liste des membres",
 	
 	localizations = "Langue",
-	localizationsInfo = "Voulez-vous plus de packs de langue? Envoyer une requête pull au dépôt MineOS sur GitHub",
+	localizationsInfo = "Vous pouvez changer votre langue ici.",
 	
 	time = "Date et heure",
 	timeFormat = "Format de date",
@@ -105,4 +105,6 @@
 	usersClaim = "Bloc de demande d'indemnisation",
 	usersClaimInfo = "En outre, vous pouvez créer un accès privé à votre bloc d'ordinateur pour le Joueur avec le prénom. Pour le faire, le joueur doit être en ligne",
 	usersClaimPlaceholder = "Type Nom du lecteur en ligne",
+
+	personalizationm1 = "Personnalisation",
 }

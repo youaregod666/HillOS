@@ -1852,7 +1852,7 @@ else
 	newFile()
 end
 
-if system.BranchName_ == "rev_snowyhill" then
+if system.BranchName_ == "rev_longcopenhagen" then
 else
 	-- Branch Error
 	window:remove()

@@ -10,7 +10,6 @@ local system = require("System")
 --------------------------------------------------------------------------------
 
 local currentScriptDirectory = filesystem.path(system.getCurrentScript())
---local modulesPath = currentScriptDirectory .. "Modules/"
 local modulesPath =  "/.system/SettingFiles/"
 local localization = system.getLocalization(currentScriptDirectory .. "Localizations/")
 local scrollSpeed = 2
@@ -150,7 +149,7 @@ end
 window:resize(window.width, window.height)
 selectModule(modulesLayout.children[1])
 
-if system.BranchName_ == "rev_snowyhill" then
+if system.BranchName_ == "rev_longcopenhagen" then
 else
 	-- Branch Error
 	window:remove()
