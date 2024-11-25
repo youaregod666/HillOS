@@ -47,7 +47,7 @@
 	users = "Usuarios",
 	
 	localizations = "Lenguajes",
-	localizationsInfo = "Puedes cambiar tu idioma aquí.",
+	localizationsInfo = "Quieres mas packs de lenguajes? Envia una solicitud al repositorio de github de MineOS",
 	
 	time = "Fecha y hora",
 	timeFormat = "Formato de la fecha",
@@ -105,6 +105,4 @@
 	usersClaim = "Reclamar bloque de ordenador",
 	usersClaimInfo = "Adiccionalmente, puedes crear acceso privado al bloque de ordenador para el jugador con el nombre puesto. Para hacerlo, el jugador debe de estar online",
 	usersClaimPlaceholder = "Pon el nombre de un jugador online",
-
-	personalizationm1 = "Personalización",
 }

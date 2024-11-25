@@ -47,7 +47,7 @@
 	users = "Gebruikers",
 	
 	localizations = "Taal",
-	localizationsInfo = "U kunt uw taal hier wijzigen.",
+	localizationsInfo = "Wil je meer talen? Verzend een pull request naar de MineOS-repository op GitHub",
 	
 	time = "Datum en tijd",
 	timeFormat = "Datum formaat",
@@ -105,6 +105,4 @@
 	usersClaim = "Claim computerblok",
 	usersClaimInfo = "U kunt privétoegang tot uw computerblok creëren voor de speler met de opgegeven naam. Om dit te doen, moet de speler online zijn",
 	usersClaimPlaceholder = "Voer online speler naam in",
-
-	personalizationm1 = "Personalisatie",
 }

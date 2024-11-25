@@ -47,7 +47,7 @@
 	users = "ユーザー",
 	
 	localizations = "言語",
-	localizationsInfo = "ここで言語を変更できます。",
+	localizationsInfo = "他の言語パックが欲しいですか? GithubでMineOSのプロジェクトにPull Requestを送ってください",
 	
 	time = "時刻と日付",
 	timeFormat = "日付の形式",
@@ -105,6 +105,4 @@
 	usersClaim = "Claim computer block",
 	usersClaimInfo = "あなたはとあるプレイヤーのためにコンピュータブロックへの私的アクセスを作成することができます。 その場合は、プレーヤーはオンラインでなければなりません",
 	usersClaimPlaceholder = "オンラインのユーザー名を記入",
-
-	personalizationm1 = "パーソナライゼーション",
 }
