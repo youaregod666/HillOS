@@ -690,7 +690,6 @@ addStage(function()
 	addTitle(0x969696, localization.installed)
 	addStageButton(localization.reboot).onTouch = function()
 		if computer.getArchitecture and computer.getArchitecture() == "Lua 5.2" then
-        		local computer = require("computer")
         		computer.setArchitecture("Lua 5.3")
     		else
         		computer.shutdown(true)
