@@ -1,5 +1,5 @@
 
-local stringsMain, stringsChangeLabel, stringKeyDown, stringsFilesystem, colorsTitle, colorsBackground, colorsText, colorsSelectionBackground, colorsSelectionText, componentProxy, componentList, pullSignal, uptime, tableInsert, mathMax, mathMin, mathHuge, mathFloor = "IMineOS BIOS", "Change label", "key_down", "filesystem", 0x2D2D2D, 0xE1E1E1, 0x878787, 0x878787, 0xE1E1E1, component.proxy, component.list, computer.pullSignal, computer.uptime, table.insert, math.max, math.min, math.huge, math.floor
+local stringsMain, stringsChangeLabel, stringKeyDown, stringsFilesystem, colorsTitle, colorsBackground, colorsText, colorsSelectionBackground, colorsSelectionText, componentProxy, componentList, pullSignal, uptime, tableInsert, mathMax, mathMin, mathHuge, mathFloor = "HillOS UEFI", "Change label", "key_down", "filesystem", 0x2D2D2D, 0xE1E1E1, 0x878787, 0x878787, 0xE1E1E1, component.proxy, component.list, computer.pullSignal, computer.uptime, table.insert, math.max, math.min, math.huge, math.floor
 
 local eeprom, gpu, internetAddress = componentProxy(componentList("eeprom")()), componentProxy(componentList("gpu")()), componentList("internet")()
 
@@ -10,7 +10,12 @@ local shutdown, gpuSet, gpuSetBackground, gpuSetForeground, gpuFill, eepromSetDa
 local OSList, rectangle, centrizedText, menuElement =
 	{
 		{
-			"/OS.lua",
+			"/.system/Boot/EFI/EFI.lua",
+			function()
+			end
+		},
+{
+			"/.com.IMineOS.EFI/EFI/EFI.lua",
 			function()
 			end
 		},
@@ -187,14 +192,14 @@ function(f)
 		end
 	end
 
-status(stringsMain, "Hold Alt to show boot options")
+status(stringsMain, "Hold Alt to show boot menu")
 
 local deadline, eventData = uptime() + 1
 while uptime() < deadline do
 	eventData = {pullSignal(deadline - uptime())}
 	if eventData[1] == stringKeyDown and eventData[4] == 56 then
 		local utilities = {
-			menuElement("Disk management", function()
+			menuElement("Disk Manager", function()
 				local restrict, filesystems, filesystemOptions =
 					function(text, limit)
 						if #text < limit then
@@ -270,38 +275,9 @@ while uptime() < deadline do
 			menuBack()
 		}
 
-		--if internetAddress then	
-			--tableInsert(utilities, 2, menuElement("Internet recovery", function()
-				--local handle, data, result, reason = componentProxy(internetAddress).request("https://raw.githubusercontent.com/IgorTimofeev/MineOS/master/Installer/Main.lua"), ""
-
-				--if handle then
-				--	status(stringsMain, "Downloading recovery script")
-
-				--	while 1 do
-				--		result, reason = handle.read(mathHuge)	
-				--		
-				--		if result then
-				--			data = data .. result
-				--		else
-				--			handle.close()
-				--			
-				--			if reason then
-				--				status(stringsMain, reason, 1)
-				--			else
-				--				executeString(data, "=string")
-				--			end
-
-				--			break
-				--		end
-				--	end
-				--else
-			--		status(stringsMain, "invalid URL-address", 1)
-				--end
-			--end))
-		--end
-		if internetAddress then	
+				if internetAddress then	
 			tableInsert(utilities, 2, menuElement("Internet recovery", function()
-				local handle, data, result, reason = componentProxy(internetAddress).request("https://raw.githubusercontent.com/youaregod666/mine/master/Installer/Main.lua"), ""
+				local handle, data, result, reason = componentProxy(internetAddress).request("https://raw.githubusercontent.com/youaregod666/HillOS/refs/heads/Dev_LittleVally/Installer/Main.lua"), ""
 
 				if handle then
 					status(stringsMain, "Downloading recovery script")
