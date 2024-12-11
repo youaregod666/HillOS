@@ -39,7 +39,7 @@ package = {
   loaded = {},
   loading = {}
 }
-local VersionThing = "1.1.8.2"
+local VersionThing = "1.1.8.3"
 -- Checks existense of specified path. It will be overriden after filesystem library initialization
 local function requireExists(path)
   return bootFilesystemProxy.exists(path)
