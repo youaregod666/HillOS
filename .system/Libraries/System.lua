@@ -12,9 +12,9 @@ local number = require("Number")
 
 --------------------------------------------------------------------------------
 -- Version String
-local HillOSVersion2 = "1.1.8.2"
-local HillOSVersion = "1.1.8.2"
-local MineOSVersion = "1.1.8.2"
+local HillOSVersion2 = "1.1.8.3"
+local HillOSVersion = "1.1.8.3"
+local MineOSVersion = "1.1.8.3"
 local BN = "1.2"
 local NeededForAppstore
 
