@@ -222,7 +222,7 @@ local paths = require("Paths")
 
 -- Creating main UI workspace
 local workspace = GUI.workspace()
-workspace:addChild(GUI.panel(1, 1, workspace.width, workspace.height, 0x333333))
+workspace:addChild(GUI.panel(1, 1, workspace.width, workspace.height, 0xFFFFFF))
 
 -- Main installer window
 local window = workspace:addChild(GUI.window(1, 1, 80, 24))
@@ -231,7 +231,7 @@ window:addChild(GUI.panel(1, 1, window.width, window.height, 0xE1E1E1))
 
 -- Top menu
 local menu = workspace:addChild(GUI.menu(1, 1, workspace.width, 0x000000, 0xFFFFFF, 0xCCCCCC, 0xFFFFFF))
-local installerMenu = menu:addContextMenuItem("HillOS", 0x2D2D2D)
+local installerMenu = menu:addContextMenuItem("HillOS", 0xFFFFFF)
 installerMenu:addItem("Shutdown").onTouch = function()
 	computer.shutdown()
 end
