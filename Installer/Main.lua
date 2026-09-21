@@ -137,6 +137,7 @@ local function deserialize(text)
 end
 
 -- Clearing screen
+component.invoke(GPUAddress, "setDepth", 8)
 component.invoke(GPUAddress, "setBackground", 0x000000)
 component.invoke(GPUAddress, "fill", 1, 1, screenWidth, screenHeight, " ")
 
@@ -305,6 +306,8 @@ local localizationsSwitchAndLabel = newSwitchAndLabel(30, 0x33B6FF, "", true)
 
 local acceptSwitchAndLabel = newSwitchAndLabel(30, 0x9949FF, "", false)
 
+local acceptSwitchAndLabel2 = newSwitchAndLabel(30, 0x9949FF, "", false)
+
 local localizationComboBox = GUI.comboBox(1, 1, 22, 1, 0xF0F0F0, 0x969696, 0xD2D2D2, 0xB4B4B4)
 for i = 1, #files.localizations do
 	localizationComboBox:addItem(filesystemHideExtension(filesystemName(files.localizations[i]))).onTouch = function()
@@ -321,6 +324,7 @@ for i = 1, #files.localizations do
 		applicationsSwitchAndLabel.label.text = localization.applications
 		localizationsSwitchAndLabel.label.text = localization.languages
 		acceptSwitchAndLabel.label.text = localization.accept
+		acceptSwitchAndLabel2.label.text = localization.accept
 	end
 end
 
@@ -363,6 +367,10 @@ local function checkUserInputs()
 end
 
 local function checkLicense()
+	nextButton.disabled = not acceptSwitchAndLabel.switch.state
+end
+
+local function checkLicense2()
 	nextButton.disabled = not acceptSwitchAndLabel.switch.state
 end
 
@@ -525,6 +533,16 @@ addStage(function()
 	layout:addChild(acceptSwitchAndLabel)
 end)
 
+-- Second License acception stage
+addStage(function()
+	checkLicense2()
+
+	local lines = text.wrap({request("Lic")}, layout.width - 2)
+	local textBox = layout:addChild(GUI.textBox(1, 1, layout.width, layout.height - 3, 0xF0F0F0, 0x696969, lines, 1, 1, 1))
+
+	layout:addChild(acceptSwitchAndLabel2)
+end)
+
 -- Downloading stage
 addStage(function()
 	stageButtonsLayout:removeChildren()
@@ -537,7 +555,7 @@ addStage(function()
 
 	-- Renaming if possible
 	if not selectedFilesystemProxy.getLabel() then
-		selectedFilesystemProxy.setLabel("MineOS HDD")
+		selectedFilesystemProxy.setLabel("HillOS HDD")
 	end
 
 	local function switchProxy(runnable)
@@ -566,7 +584,7 @@ addStage(function()
 	workspace:draw()
 	
 	component.invoke(EEPROMAddress, "set", request(EFIURL))
-	component.invoke(EEPROMAddress, "setLabel", "MineOS EFI")
+	component.invoke(EEPROMAddress, "setLabel", "HillOS UEFI")
 	component.invoke(EEPROMAddress, "setData", selectedFilesystemProxy.address)
 
 	-- Downloading files
@@ -664,7 +682,11 @@ addStage(function()
 	addImage(1, 1, "Done")
 	addTitle(0x969696, localization.installed)
 	addStageButton(localization.reboot).onTouch = function()
-		computer.shutdown(true)
+		if computer.getArchitecture and computer.getArchitecture() == "Lua 5.2" then
+			computer.setArchitecture("Lua 5.3")
+		else
+			computer.shutdown(true)
+		end
 	end
 	workspace:draw()
 

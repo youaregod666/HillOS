@@ -18,6 +18,6 @@
 	flashing = "Kirjoitetaan EEPROMille...",
 	creating = "Luodaan käyttäjäprofiilia...",
 	installing = "Asennetaan",
-	installed = "Asennus on valmis. Nauti!",
+	installed = "HillOS on asennettu. Nauti!",
 	reboot = "Käynnistä tietokone uudelleen",
 }

@@ -9,7 +9,7 @@
 	screensavers = "Screensavers:",
 	applications = "Third party apps:",
 	languages = "Language packs:",
-	accept = "I accept this shit:",
+	accept = "I accept:",
 	select = "Select disk for installation",
 	erase = "Erase",
 	used = "used",
@@ -18,6 +18,6 @@
 	flashing = "Flashing EEPROM...",
 	creating = "Creating user profile...",
 	installing = "Installing",
-	installed = "MineOS has been installed. Enjoy!",
+	installed = "HillOS has been installed. Enjoy!",
 	reboot = "Reboot the computer",
 }
