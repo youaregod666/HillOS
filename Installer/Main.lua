@@ -298,7 +298,7 @@ local passwordSubmitInput = newInput("", false, "•")
 local usernamePasswordText = GUI.text(1, 1, 0xFF3333, "")
 local passwordSwitchAndLabel = newSwitchAndLabel(30, 0x33CC33, "", false)
 
-local wallpapersSwitchAndLabel = newSwitchAndLabel(30, 0xFF4980, "", true)
+local wallpapersSwitchAndLabel = newSwitchAndLabel(25, 0xFF4980, "", true)
 local screensaversSwitchAndLabel = newSwitchAndLabel(25, 0xFFB600, "", false)
 local applicationsSwitchAndLabel = newSwitchAndLabel(25, 0x33CC33, "", false)
 local localizationsSwitchAndLabel = newSwitchAndLabel(25, 0x6699FF, "", true)
