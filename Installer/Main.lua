@@ -303,9 +303,9 @@ local screensaversSwitchAndLabel = newSwitchAndLabel(25, 0xFFB600, "", false)
 local applicationsSwitchAndLabel = newSwitchAndLabel(25, 0x33CC33, "", false)
 local localizationsSwitchAndLabel = newSwitchAndLabel(25, 0x6699FF, "", true)
 
-local acceptSwitchAndLabel = newSwitchAndLabel(20, 0x33CC33, "", false)
+local acceptSwitchAndLabel = newSwitchAndLabel(15, 0x33CC33, "", false)
 
-local acceptSwitchAndLabel2 = newSwitchAndLabel(20, 0x33CC33, "", false)
+local acceptSwitchAndLabel2 = newSwitchAndLabel(15, 0x33CC33, "", false)
 
 local localizationComboBox = GUI.comboBox(1, 1, 22, 1, 0xF0F0F0, 0x969696, 0xD2D2D2, 0xB4B4B4)
 for i = 1, #files.localizations do

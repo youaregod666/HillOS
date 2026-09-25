@@ -4,6 +4,8 @@ local event = require("Event")
 
 --------------------------------------------------------------------------------
 
+local EFI_Secure_Count = 0
+
 local filesystem = {
 	SORTING_NAME = 1,
 	SORTING_TYPE = 2,
@@ -404,6 +406,12 @@ end
 --------------------------------------- Rest proxy methods -----------------------------------------
 
 function filesystem.exists(path)
+	if string.find(path, "/.system/.Ø_O/DISK_KEY.nope") or string.find(path, "/.system/.Ø_O/EFI_KEY.nope") then
+		if EFI_Secure_Count > 2 then
+			return nil
+		end
+	end
+
 	local proxy, proxyPath = filesystem.get(path)
 	return proxy.exists(proxyPath)
 end
