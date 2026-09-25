@@ -230,16 +230,16 @@ window.localX, window.localY = math.ceil(workspace.width / 2 - window.width / 2)
 window:addChild(GUI.panel(1, 1, window.width, window.height, 0xCCCCCC))
 
 -- Top menu
-local menu = workspace:addChild(GUI.menu(1, 1, workspace.width, 0x000000, 0xFFFFFF, 0x333333, 0xFFFFFF))
+local menu = workspace:addChild(GUI.menu(1, 1, workspace.width, 0xFFFFFF, 0x000000, 0xCCCCCC, 0xFFFFFF))
 local installerMenu = menu:addContextMenuItem("HillOS", 0xFFFFFF)
-installerMenu:addItem("Shutdown", 0xFFFFFF).onTouch = function()
+installerMenu:addItem("Shutdown").onTouch = function()
 	computer.shutdown()
 end
-installerMenu:addItem("Reboot", 0xFFFFFF).onTouch = function()
+installerMenu:addItem("Reboot").onTouch = function()
 	computer.shutdown(true)
 end
 installerMenu:addSeparator()
-installerMenu:addItem("Exit", 0xFFFFFF).onTouch = function()
+installerMenu:addItem("Exit").onTouch = function()
 	workspace:stop()
 end
 
