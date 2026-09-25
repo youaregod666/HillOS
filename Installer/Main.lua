@@ -231,7 +231,7 @@ window:addChild(GUI.panel(1, 1, window.width, window.height, 0xCCCCCC))
 
 -- Top menu
 local menu = workspace:addChild(GUI.menu(1, 1, workspace.width, 0xFFFFFF, 0x000000, 0xCCCCCC, 0xFFFFFF))
-local installerMenu = menu:addContextMenuItem("HillOS", 0xFFFFFF)
+local installerMenu = menu:addContextMenuItem("HillOS", 0x000000)
 installerMenu:addItem("Shutdown").onTouch = function()
 	computer.shutdown()
 end
