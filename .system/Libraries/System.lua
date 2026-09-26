@@ -18,7 +18,7 @@ local BN = "1.4"
 local NeededForAppstore
 
 -- Branch String
-local BranchName = "dev_littlevally"
+local BranchName = "rev_littlevally"
 local BranchName_ = "Do i look dumb?"
 
 --
@@ -3054,7 +3054,7 @@ function system.authorize()
 		computer.shutdown(true)
 	end
 
-	if BranchName == "dev_littlevally" then
+	if BranchName == "rev_littlevally" then
 	else
 		computer.shutdown(true)
 	end

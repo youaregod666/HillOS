@@ -13,7 +13,7 @@ local EEPROMAddress, internetAddress, GPUAddress =
 component.invoke(GPUAddress, "bind", getComponentAddress("screen"))
 local screenWidth, screenHeight = component.invoke(GPUAddress, "getResolution")
 
-local repositoryURL = "https://raw.githubusercontent.com/youaregod666/HillOS/refs/heads/Dev_LittleVally/"
+local repositoryURL = "https://raw.githubusercontent.com/youaregod666/HillOS/refs/heads/LittleVally/"
 local installerURL = "Installer/"
 local EFIURL = "EFI/Minified.lua"
 
