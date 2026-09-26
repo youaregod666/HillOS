@@ -3609,11 +3609,16 @@ end
 
 --------------------------------------------------------------------------------
 
-function GUI.addBackgroundContainer(parentContainer, addPanel, addLayout, title)
+function GUI.addBackgroundContainer(parentContainer, addPanel, addLayout, title, color)
 	local container = parentContainer:addChild(GUI.container(1, 1, parentContainer.width, parentContainer.height))
 	
 	if addPanel then
-		container.panel = container:addChild(GUI.panel(1, 1, container.width, container.height, GUI.BACKGROUND_CONTAINER_PANEL_COLOR, GUI.BACKGROUND_CONTAINER_PANEL_TRANSPARENCY))
+		if color == nil then
+			container.panel = container:addChild(GUI.panel(1, 1, container.width, container.height, GUI.BACKGROUND_CONTAINER_PANEL_COLOR, GUI.BACKGROUND_CONTAINER_PANEL_TRANSPARENCY))
+		else
+			container.panel = container:addChild(GUI.panel(1, 1, container.width, container.height, color, GUI.BACKGROUND_CONTAINER_PANEL_TRANSPARENCY))
+		end
+		--container.panel
 		container.panel.eventHandler = function(parentContainer, object, e1)
 			if e1 == "touch" then
 				container:remove()

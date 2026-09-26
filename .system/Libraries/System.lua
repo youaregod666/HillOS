@@ -11,9 +11,9 @@ local number = require("Number")
 
 --------------------------------------------------------------------------------
 -- Version String
-local HillOSVersion2 = "1.2.8.16"
-local HillOSVersion = "1.2.8.16"
-local MineOSVersion = "1.2.8.16"
+local HillOSVersion2 = "1.2.8.22"
+local HillOSVersion = "1.2.8.22"
+local MineOSVersion = "1.2.8.22"
 local BN = "1.4"
 local NeededForAppstore
 
@@ -106,7 +106,7 @@ function system.getDefaultUserSettings()
 		
 		interfaceScreenAddress = nil,
 		interfaceWallpaperEnabled = false,
-		interfaceWallpaperPath = paths.system.pictures .. "Space.pic",
+		interfaceWallpaperPath = paths.system.pictures .. "Block.pic",
 		interfaceWallpaperMode = 1,
 		interfaceWallpaperBrightness = 0.9,
 
@@ -143,6 +143,7 @@ function system.getDefaultUserSettings()
 		
 		tasks = {},
 		dockShortcuts = {
+			filesystem.path(paths.system.applicationAppMarket),
 			filesystem.path(paths.system.applicationMineCodeIDE),
 			filesystem.path(paths.system.applicationFinder),
 			filesystem.path(paths.system.applicationPictureEdit),
@@ -2672,14 +2673,17 @@ function system.updateDesktop()
 	desktopMenuMineOSItem = desktopMenu:addContextMenuItem("HillOS", 0x000000)
 	
 	desktopMenuMineOSItem:addItem(localization.aboutSystem).onTouch = function()
-		local container = GUI.addBackgroundContainer(workspace, true, true, localization.aboutSystem)
+		local container = GUI.addBackgroundContainer(workspace, true, true, localization.aboutSystem, 0x000000)
 		container.layout:removeChildren()
+
+		-- Checks if S Mode is enabled and sets the title
 		local S = ""
-		--if userSettings.SMode == "1" then
-		--	S = "HillOS S Mode"
-		--else
+		if userSettings.SMode == "1" then
+			S = "HillOS S Mode"
+		else
 			S = "HillOS"
-		--end
+		end
+
 		local lines = {
 			S .. " " .. HillOSVersion,
 			" ",
@@ -2695,7 +2699,7 @@ function system.updateDesktop()
 			"https://github.com/IgorTimofeev/MineOS/tree/master",
 		}
 
-		local textBox = container.layout:addChild(GUI.textBox(1, 1, container.layout.width, #lines, nil, 0xB4B4B4, lines, 1, 0, 0))
+		local textBox = container.layout:addChild(GUI.textBox(1, 1, container.layout.width, #lines, nil, 0xFFFFFF, lines, 1, 0, 0))
 		textBox:setAlignment(GUI.ALIGNMENT_HORIZONTAL_CENTER, GUI.ALIGNMENT_VERTICAL_TOP)
 		textBox.eventHandler = container.panel.eventHandler
 
@@ -2704,8 +2708,9 @@ function system.updateDesktop()
 
 	desktopMenuMineOSItem:addItem("Computer Info").onTouch = function()
 		local component = require("Component")
-		local container = GUI.addBackgroundContainer(workspace, true, true, localization.aboutSystem)
+		local container = GUI.addBackgroundContainer(workspace, true, true, localization.aboutSystem, 0x000000)
 		container.layout:removeChildren()
+
 
 		local EFI = component.eeprom
 		local totalMemoryKB = math.modf(computer.totalMemory() / 1024)
@@ -2716,6 +2721,7 @@ function system.updateDesktop()
 		local efiname = EFI.getLabel()
 		local boot = EFI.getData()
 
+		-- Checks if S Mode is enabled and sets the title
 		local S = ""
 		if userSettings.SMode == "1" then
 			S = "HillOS S Mode"
@@ -2747,7 +2753,7 @@ function system.updateDesktop()
 			"Boot Drive: " .. boot,
 		}
 
-		local textBox = container.layout:addChild(GUI.textBox(1, 1, container.layout.width, #lines, nil, 0xB4B4B4, lines, 1, 0, 0))
+		local textBox = container.layout:addChild(GUI.textBox(1, 1, container.layout.width, #lines, nil, 0xFFFFFF, lines, 1, 0, 0))
 		textBox:setAlignment(GUI.ALIGNMENT_HORIZONTAL_CENTER, GUI.ALIGNMENT_VERTICAL_TOP)
 		textBox.eventHandler = container.panel.eventHandler
 
@@ -3045,11 +3051,10 @@ function system.authorize()
 	system.updateWorkspace()
 
 	if computer.getArchitecture and computer.getArchitecture() == "Lua 5.2" then
-		--error("Update to Lua 5.3. HillOS does not support Lua 5.2")
 		computer.shutdown(true)
 	end
+
 	if BranchName == "dev_littlevally" then
-		--GUI.alert(BranchName)
 	else
 		computer.shutdown(true)
 	end

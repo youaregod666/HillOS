@@ -65,7 +65,7 @@ module.onTouch = function()
     system.tabletmode = TabletSw.state
 
   end
-  local ss = window.contentLayout:addChild(GUI.text(1, 1, 0x2D2D2D, "Make by Sebastian"))
+  local ss = window.contentLayout:addChild(GUI.text(1, 1, 0x2D2D2D, "Made by Sebastian"))
   if userSettings.EFI == true then
   efiSwitch.state = true
   end
